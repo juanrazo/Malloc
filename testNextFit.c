@@ -21,23 +21,24 @@ int main()
 {
   void *p1, *p2, *p3, *p4;
   arenaCheck();
-  p1 = firstFitAllocRegion(254);
+  p1 = nextFitAllocRegion(254);
   arenaCheck();
-  p2 = firstFitAllocRegion(25400);
+  p2 = nextFitAllocRegion(100);
   arenaCheck();
-  p3 = firstFitAllocRegion(254);
+  p3 = nextFitAllocRegion(254);
   printf("%8zx %8zx %8zx\n", p1, p2, p3);
   arenaCheck();
   freeRegion(p2);
   arenaCheck();
-  p4 = firstFitAllocRegion(25416);
+  p4 = nextFitAllocRegion(100);
   arenaCheck();
-  printf("%8zx %8zx %8zx\n", p1, p4, p3);
+  printf("%8zx %8zx %8zx\n", p1, p3, p4);
+  arenaCheck();
+  freeRegion(p4);
+  arenaCheck();
   freeRegion(p3);
   arenaCheck();
   freeRegion(p1);
-  arenaCheck();
-  freeRegion(p4);
   arenaCheck();
   {				/* measure time for 10000 mallocs */
     struct timeval t1, t2;
