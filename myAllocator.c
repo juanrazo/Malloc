@@ -266,26 +266,28 @@ void *resizeRegion(void *r, size_t newSize) {
     return r;
 
   else{
-    
+    // Set up to check adjecent region for possible resize.
     sizeDifference = newSize - oldSize;
     aSizeDiff = align8(sizeDifference);
     successor = getNextPrefix(regionToPrefix(r));    
   }
-
+  // Check if adjecent region is a candidate to increase
   if (successor && !successor->allocated && (computeUsableSpace(successor) >= aSizeDiff)){
     size_t availSize = computeUsableSpace(successor);
+    // Split block
     if(availSize >= (aSizeDiff + prefixSize + suffixSize + 8)){
       void *freeSliverStart = (void *)successor + prefixSize + suffixSize + aSizeDiff;
       void *freeSliverEnd = computeNextPrefixAddr(successor);
       makeFreeBlock(freeSliverStart, freeSliverEnd - freeSliverStart);
       makeFreeBlock(successor, freeSliverStart - (void *)successor);
     }
-    
+    // Coalese successor with prevous region
     regionToPrefix(r)->allocated=0;
     BlockPrefix_t *newRegion = coalescePrev(successor);
     newRegion->allocated = 1;
     return prefixToRegion(newRegion);
   }
+  // old code, if adjecent region is not a candidate then just copy
   else {			/* allocate new region & copy old data */
     char *o = (char *)r;	/* treat both regions as char* */
     char *n = (char *)firstFitAllocRegion(newSize); 
@@ -297,20 +299,34 @@ void *resizeRegion(void *r, size_t newSize) {
   }
 }
 
+/*
+  This function is a copy of findFirstFit with a few modifications to implement
+next-fit. I added a global variable to save the prefix of the previous region. By
+saving the previx I may begin to look at the old region and iterate to the end. The
+idea is to look until arenaEnd else call findFirstFit to wrap around once, look for
+a free region else try to increase arena. 
+*/
 BlockPrefix_t *findNextFit(size_t s) {	/* find first block with usable space > s */
-  if(isNotInitialized){
+  if(isNotInitialized){        /* if its the first time called then start at arenaBegin*/
     nextFit = arenaBegin;
     isNotInitialized = 0;
   }
-  while (nextFit /*&& (nextFit < arenaEnd)*/) {
+  // Begin to look from previous prefix until end of arena
+  while (nextFit && ((void *)nextFit < (void *)arenaEnd)) {
     if (!nextFit->allocated && computeUsableSpace(nextFit) >= s){
-      nextFit = getNextPrefix(nextFit);
-      //WRAP AROUND
       return nextFit;
     }
-    return growArena(s);
+    nextFit = getNextPrefix(nextFit);
+  }
+  // loop back to arenaBegin and look for a free region
+  nextFit = findFirstFit(s);
+  return nextFit;
 }
 
+/*
+  This function is a copy of firstFitAllocRegion. Because the idea is the same I just
+call the findNextFit function I modified. 
+*/
 void *nextFitAllocRegion(size_t s) {
   size_t asize = align8(s);
   BlockPrefix_t *p;
