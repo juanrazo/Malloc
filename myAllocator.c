@@ -303,9 +303,10 @@ BlockPrefix_t *findNextFit(size_t s) {	/* find first block with usable space > s
     isNotInitialized = 0;
   }
   while (nextFit /*&& (nextFit < arenaEnd)*/) {
-	if (!nextFit->allocated && computeUsableSpace(nextFit) >= s)
-	    return nextFit;
-	nextFit = getNextPrefix(nextFit);
+    if (!nextFit->allocated && computeUsableSpace(nextFit) >= s){
+      nextFit = getNextPrefix(nextFit);
+      //WRAP AROUND
+      return nextFit;
     }
     return growArena(s);
 }
