@@ -1,4 +1,8 @@
 # os-malloc
+
+Juan Razo
+
+I started this lab by reading the file myAllocator.c and getting a basic understanding of next-fit from a power point
 This directory contains:
 
 myAllocator.c: a first-fit allocator
