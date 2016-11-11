@@ -2,7 +2,10 @@
 
 Juan Razo
 
-I started this lab by reading the file myAllocator.c and getting a basic understanding of next-fit from a power point
+I started this lab by reading the file myAllocator.c and getting a basic understanding of next-fit from a power point at 
+https://courses.cs.washington.edu/courses/cse351/10sp/lectures/15-memallocation.pdf
+
+
 This directory contains:
 
 myAllocator.c: a first-fit allocator
