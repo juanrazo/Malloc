@@ -15,7 +15,7 @@ the parameter increase. If the size difference does not fit in the adjacent bloc
 old region into the new one, just as resize did before. To test my functions I tried to do Path testing. I tried to cover all
 the paths the code I added. 
 
-###### To test resize I create a file testResize.c and created used 3 pointers. For p1 I allocate 254, p2 = 100 and p3 = 254. I then free p2 and resize p1 to 300. This means that resize should increase the size to the adjecent block which was where p2 was at. And below we can see 
+##### To test resize I create a file testResize.c and created used 3 pointers. For p1 I allocate 254, p2 = 100 and p3 = 254. I then free p2 and resize p1 to 300. This means that resize should increase the size to the adjecent block which was where p2 was at. Below we can see the addresses being used whe using resize:
 
 [student@localhost os-malloc-lab-juanrazo]$ ./testResize  <br />
  mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k <br />
@@ -87,7 +87,7 @@ p1: 8f232a0 	p3: 8f23190<br />
 10000 firstFitAllocRegion(4) required 0.371000 seconds<br />
 [student@localhost os-malloc-lab-juanrazo]$ <br />
 
-# For the testing of next fit I used 6 pointers:
+##### For the testing of next fit I used 6 pointers:
 
 
 [student@localhost os-malloc-lab-juanrazo]$ ./testNextFit 
