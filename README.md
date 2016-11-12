@@ -87,7 +87,9 @@ p1: 8f232a0 	p3: 8f23190<br />
 10000 firstFitAllocRegion(4) required 0.371000 seconds<br />
 [student@localhost os-malloc-lab-juanrazo]$ <br />
 
-##### For the testing of next fit I used 6 pointers:
+#### For the testing of next fit I used 6 pointers:
+#### p1 = 254, p2 = 100, p3 = 254, p4 = 100, p5 = 104776 and p6 = 80
+####
 
 
 [student@localhost os-malloc-lab-juanrazo]$ ./testNextFit 
