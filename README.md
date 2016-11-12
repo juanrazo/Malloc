@@ -38,11 +38,11 @@ p1: 8f23008 	p2: 8f23118 	p3: 8f23190<br />
   checking from 0x8f23298, size= 1047896, allocated=0...<br />
  mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
   checking from 0x8f23000, size=     256, allocated=1...<br />
-  checking from 0x8f23110, size=     104, allocated=0...#####<--------------- p2 freed<br />
+  checking from 0x8f23110, size=     104, allocated=0... __<--------------- p2 freed__<br />
   checking from 0x8f23188, size=     256, allocated=1...<br />
   checking from 0x8f23298, size= 1047896, allocated=0...<br />
  mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
-  checking from 0x8f23000, size=     320, allocated=1...			<--------------- p1 resized<br />
+  checking from 0x8f23000, size=     320, allocated=1...		__<--------------- p1 resized__<br />
   checking from 0x8f23150, size=      40, allocated=0...<br />
   checking from 0x8f23188, size=     256, allocated=1...<br />
   checking from 0x8f23298, size= 1047896, allocated=0...<br />
@@ -50,18 +50,18 @@ p1: 8f23008 	p2: 8f23118 	p3: 8f23190<br />
 <br />
 <br />
 ---------------------------Addresses----------------------------<br />
-p1: 8f23008 	p3: 8f23190										<--------------- p1 at same address and incresed size<br />
+p1: 8f23008 	p3: 8f23190										__<--------------- p1 at same address and incresed size__<br />
 ---------------------------Addresses----------------------------<br />
 <br />
-  checking from 0x8f23000, size=     376, allocated=0...   <---------------- p1 resized & deallocate <br />
+  checking from 0x8f23000, size=     376, allocated=0... __<---------------- p1 resized & deallocate__<br />
   checking from 0x8f23188, size=     256, allocated=1...<br />
-  checking from 0x8f23298, size=     600, allocated=1...   <---------------- p1 copied to different address<br />
+  checking from 0x8f23298, size=     600, allocated=1... __<---------------- p1 copied to different address__<br />
   checking from 0x8f23500, size= 1047280, allocated=0...<br />
  mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
 <br />
 <br />
 ---------------------------Addresses----------------------------<br />
-p1: 8f232a0 	p3: 8f23190                          <----------- moved p1 after p3 and copied<br />
+p1: 8f232a0 	p3: 8f23190                        __<----------- moved p1 after p3 and copied__<br />
 ---------------------------Addresses----------------------------<br />
 <br />
   checking from 0x8f23000, size=     376, allocated=0...<br />
