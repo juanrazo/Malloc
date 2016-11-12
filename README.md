@@ -91,90 +91,90 @@ p1: 8f232a0 	p3: 8f23190<br />
 #### p1 = 254, p2 = 100, p3 = 254, p4 = 100, p5 = 104776 and p6 = 80
 ####
 
-
-[student@localhost os-malloc-lab-juanrazo]$ ./testNextFit 
- mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size= 1048288, allocated=0...
- mcheck: numBlocks=2, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=     104, allocated=1...
-  checking from 0x92cc188, size= 1048168, allocated=0...
- mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=     104, allocated=1...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size= 1047896, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 92cc008 	p2: 92cc118 	p3: 92cc190
----------------------------Addresses----------------------------
-
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=     104, allocated=0...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size= 1047896, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 92cc008 	p2: 92cc118 	p3: 92cc190
----------------------------Addresses----------------------------
-
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=     104, allocated=0...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size=     104, allocated=1...
-  checking from 0x92cc310, size= 1047776, allocated=0...
- mcheck: numBlocks=5, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 92cc008 	p2:%8 	p3: 92cc118 	p4: 92cc190
----------------------------Addresses----------------------------
-
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=     104, allocated=0...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size=     104, allocated=1...
-  checking from 0x92cc310, size= 1047776, allocated=1...
- mcheck: numBlocks=5, amtAllocated=1023k, amtFree=0k, arenaSize=0k
-
-
----------------------------Addresses----------------------------
-p1: 92cc008 	p3: 92cc190 	p4: 92cc2a0 	p5: 92cc318
----------------------------Addresses----------------------------
-
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=      80, allocated=1...
-  checking from 0x92cc170, size=       8, allocated=0...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size=     104, allocated=1...
-  checking from 0x92cc310, size= 1047776, allocated=1...
- mcheck: numBlocks=6, amtAllocated=1023k, amtFree=0k, arenaSize=0k
-
-
----------------------------Addresses----------------------------
-p1: 92cc008 	p3: 92cc190 	p4: 92cc2a0 	p5: 92cc318 	p6: 92cc118
----------------------------Addresses----------------------------
-
-  checking from 0x92cc000, size=     256, allocated=1...
-  checking from 0x92cc110, size=      80, allocated=1...
-  checking from 0x92cc170, size=       8, allocated=0...
-  checking from 0x92cc188, size=     256, allocated=1...
-  checking from 0x92cc298, size=     104, allocated=1...
-  checking from 0x92cc310, size= 1047776, allocated=1...
- mcheck: numBlocks=6, amtAllocated=1023k, amtFree=0k, arenaSize=0k
-
-
-
----------------------------BEGIN TO FREE----------------------------
-
-  checking from 0x92cc000, size= 1048560, allocated=0...
- mcheck: numBlocks=1, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-10000 nextFitAllocRegion(4) required 0.369000 seconds
-[student@localhost os-malloc-lab-juanrazo]$ 
+<br />
+[student@localhost os-malloc-lab-juanrazo]$ ./testNextFit <br />
+ mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size= 1048288, allocated=0...<br />
+ mcheck: numBlocks=2, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=     104, allocated=1...<br />
+  checking from 0x92cc188, size= 1048168, allocated=0...<br />
+ mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=     104, allocated=1...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size= 1047896, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 92cc008 	p2: 92cc118 	p3: 92cc190<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=     104, allocated=0...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size= 1047896, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 92cc008 	p2: 92cc118 	p3: 92cc190<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=     104, allocated=0...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size=     104, allocated=1...<br />
+  checking from 0x92cc310, size= 1047776, allocated=0...<br />
+ mcheck: numBlocks=5, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 92cc008 	p2:%8 	p3: 92cc118 	p4: 92cc190<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=     104, allocated=0...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size=     104, allocated=1...<br />
+  checking from 0x92cc310, size= 1047776, allocated=1...<br />
+ mcheck: numBlocks=5, amtAllocated=1023k, amtFree=0k, arenaSize=0k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 92cc008 	p3: 92cc190 	p4: 92cc2a0 	p5: 92cc318<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=      80, allocated=1...<br />
+  checking from 0x92cc170, size=       8, allocated=0...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size=     104, allocated=1...<br />
+  checking from 0x92cc310, size= 1047776, allocated=1...<br />
+ mcheck: numBlocks=6, amtAllocated=1023k, amtFree=0k, arenaSize=0k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 92cc008 	p3: 92cc190 	p4: 92cc2a0 	p5: 92cc318 	p6: 92cc118<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x92cc000, size=     256, allocated=1...<br />
+  checking from 0x92cc110, size=      80, allocated=1...<br />
+  checking from 0x92cc170, size=       8, allocated=0...<br />
+  checking from 0x92cc188, size=     256, allocated=1...<br />
+  checking from 0x92cc298, size=     104, allocated=1...<br />
+  checking from 0x92cc310, size= 1047776, allocated=1...<br />
+ mcheck: numBlocks=6, amtAllocated=1023k, amtFree=0k, arenaSize=0k<br />
+<br />
+<br />
+<br />
+---------------------------BEGIN TO FREE----------------------------<br />
+<br />
+  checking from 0x92cc000, size= 1048560, allocated=0...<br />
+ mcheck: numBlocks=1, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+10000 nextFitAllocRegion(4) required 0.369000 seconds<br />
+[student@localhost os-malloc-lab-juanrazo]$ <br />
 
 
