@@ -19,62 +19,62 @@ To test resize I create a file testResize.c and created used 3 pointers. For p1 
 free p2 and resize p1 to 300. This means that resize should increase the size to the adjecent block which was where p2 was at.
 And below we can see 
 
-[student@localhost os-malloc-lab-juanrazo]$ ./testResize 
- mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k
-  checking from 0x8f23000, size=     256, allocated=1...
-  checking from 0x8f23110, size= 1048288, allocated=0...
- mcheck: numBlocks=2, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-  checking from 0x8f23000, size=     256, allocated=1...
-  checking from 0x8f23110, size=     104, allocated=1...
-  checking from 0x8f23188, size= 1048168, allocated=0...
- mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 8f23008 	p2: 8f23118 	p3: 8f23190
----------------------------Addresses----------------------------
-
-  checking from 0x8f23000, size=     256, allocated=1...
-  checking from 0x8f23110, size=     104, allocated=1...
-  checking from 0x8f23188, size=     256, allocated=1...
-  checking from 0x8f23298, size= 1047896, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-  checking from 0x8f23000, size=     256, allocated=1...
-  checking from 0x8f23110, size=     104, allocated=0...        <--------------- p2 freed
-  checking from 0x8f23188, size=     256, allocated=1...
-  checking from 0x8f23298, size= 1047896, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-  checking from 0x8f23000, size=     320, allocated=1...        <--------------- p1 resized
-  checking from 0x8f23150, size=      40, allocated=0...
-  checking from 0x8f23188, size=     256, allocated=1...
-  checking from 0x8f23298, size= 1047896, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 8f23008 	p3: 8f23190                                        <--------------- p1 at same address and incresed size
----------------------------Addresses----------------------------
-
-  checking from 0x8f23000, size=     376, allocated=0...
-  checking from 0x8f23188, size=     256, allocated=1...
-  checking from 0x8f23298, size=     600, allocated=1...
-  checking from 0x8f23500, size= 1047280, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 8f232a0 	p3: 8f23190
----------------------------Addresses----------------------------
-
-  checking from 0x8f23000, size=     376, allocated=0...
-  checking from 0x8f23188, size=     256, allocated=1...
-  checking from 0x8f23298, size=     600, allocated=1...
-  checking from 0x8f23500, size= 1047280, allocated=0...
- mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
-
-
----------------------------Addresses----------------------------
-p1: 8f232a0 	p3: 8f23190
+[student@localhost os-malloc-lab-juanrazo]$ ./testResize  <br />
+ mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k <br />
+  checking from 0x8f23000, size=     256, allocated=1... <br />
+  checking from 0x8f23110, size= 1048288, allocated=0...<br />
+ mcheck: numBlocks=2, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+  checking from 0x8f23000, size=     256, allocated=1...<br />
+  checking from 0x8f23110, size=     104, allocated=1...<br />
+  checking from 0x8f23188, size= 1048168, allocated=0...<br />
+ mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 8f23008 	p2: 8f23118 	p3: 8f23190<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x8f23000, size=     256, allocated=1...<br />
+  checking from 0x8f23110, size=     104, allocated=1...<br />
+  checking from 0x8f23188, size=     256, allocated=1...<br />
+  checking from 0x8f23298, size= 1047896, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+  checking from 0x8f23000, size=     256, allocated=1...<br />
+  checking from 0x8f23110, size=     104, allocated=0...        <--------------- p2 freed<br />
+  checking from 0x8f23188, size=     256, allocated=1...<br />
+  checking from 0x8f23298, size= 1047896, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+  checking from 0x8f23000, size=     320, allocated=1...        <--------------- p1 resized<br />
+  checking from 0x8f23150, size=      40, allocated=0...<br />
+  checking from 0x8f23188, size=     256, allocated=1...<br />
+  checking from 0x8f23298, size= 1047896, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 8f23008 	p3: 8f23190                                        <--------------- p1 at same address and incresed size<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x8f23000, size=     376, allocated=0...<br />
+  checking from 0x8f23188, size=     256, allocated=1...<br />
+  checking from 0x8f23298, size=     600, allocated=1...<br />
+  checking from 0x8f23500, size= 1047280, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 8f232a0 	p3: 8f23190<br />
+---------------------------Addresses----------------------------<br />
+<br />
+  checking from 0x8f23000, size=     376, allocated=0...<br />
+  checking from 0x8f23188, size=     256, allocated=1...<br />
+  checking from 0x8f23298, size=     600, allocated=1...<br />
+  checking from 0x8f23500, size= 1047280, allocated=0...<br />
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
+<br />
+<br />
+---------------------------Addresses----------------------------<br />
+p1: 8f232a0 	p3: 8f23190<br />
 ---------------------------Addresses----------------------------
 
 
