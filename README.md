@@ -1,6 +1,6 @@
 # os-malloc
 
-Juan Razo
+###Juan Razo
 
 # Section 1 Introduction
 I started this lab by reading the file myAllocator.c and getting a basic understanding of next-fit from a power point at 
@@ -14,7 +14,7 @@ the prefix and suffix fit in the adjacent region then set r->allocated to 0 so I
 new region as allocated. This will grow the old region with an adjacent regioin, ofcourse it will grow to the size passed in 
 the parameter increase. If the size difference does not fit in the adjacent block then call firstFitAllocRegion and copy the 
 old region into the new one, just as resize did before. To test my functions I tried to do Path testing. I tried to cover all
-the paths the code I added. 
+the paths to the code I added. 
 
 # Section 2 Testing resizeRegion()
 #### To test resize I create a file testResize.c and created used 3 pointers. For p1 I allocate 254, p2 = 100 and p3 = 254. I then free p2 and resize p1 to 300. This means that resize should increase the size to the adjecent block which was where p2 was at. Below we can see the addresses being used whe using resize:
