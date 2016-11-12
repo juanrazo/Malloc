@@ -3,34 +3,89 @@
 Juan Razo
 
 I started this lab by reading the file myAllocator.c and getting a basic understanding of next-fit from a power point at 
-https://courses.cs.washington.edu/courses/cse351/10sp/lectures/15-memallocation.pdf
+https://courses.cs.washington.edu/courses/cse351/10sp/lectures/15-memallocation.pdf. I manually computed align8 in binary to 
+get a good understanding of how it worked. After good understanding of firstFitAllocRegion I was able to implement
+nextFitAclloc by adding a global variable to store the last preFix (nextFit) and search from the nextFit when called the next 
+time. If nextFit reaches the end then go back to the begining and look once more before increasing the arena. When running
+a test on nextFit I found that growArena never increases the arena, even when the growingDisabled is not set. For resizeRegion 
+I get the size difference and align8(size difference) to evaluate the successor of the old region. If the size difference plus
+the prefix and suffix fit in the adjacent region then set r->allocated to 0 so I can coalscePrev() both regions and set the 
+new region as allocated. This will grow the old region with an adjacent regioin, ofcourse it will grow to the size passed in 
+the parameter increase. If the size difference does not fit in the adjacent block then call firstFitAllocRegion and copy the 
+old region into the new one, just as resize did before. To test my functions I tried to do Path testing. I tried to cover all
+the paths the code I added. 
+
+To test resize I create a file testResize.c and created used 3 pointers. For p1 I allocate 254, p2 = 100 and p3 = 254. I then
+free p2 and resize p1 to 300. This means that resize should increase the size to the adjecent block which was where p2 was at.
+And below we can see 
+
+[student@localhost os-malloc-lab-juanrazo]$ ./testResize 
+ mcheck: numBlocks=0, amtAllocated=0k, amtFree=0k, arenaSize=0k
+  checking from 0x8f23000, size=     256, allocated=1...
+  checking from 0x8f23110, size= 1048288, allocated=0...
+ mcheck: numBlocks=2, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+  checking from 0x8f23000, size=     256, allocated=1...
+  checking from 0x8f23110, size=     104, allocated=1...
+  checking from 0x8f23188, size= 1048168, allocated=0...
+ mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k
 
 
-This directory contains:
+---------------------------Addresses----------------------------
+p1: 8f23008 	p2: 8f23118 	p3: 8f23190
+---------------------------Addresses----------------------------
 
-myAllocator.c: a first-fit allocator
-myAllocator.h: its header file
+  checking from 0x8f23000, size=     256, allocated=1...
+  checking from 0x8f23110, size=     104, allocated=1...
+  checking from 0x8f23188, size=     256, allocated=1...
+  checking from 0x8f23298, size= 1047896, allocated=0...
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+  checking from 0x8f23000, size=     256, allocated=1...
+  checking from 0x8f23110, size=     104, allocated=0...        <--------------- p2 freed
+  checking from 0x8f23188, size=     256, allocated=1...
+  checking from 0x8f23298, size= 1047896, allocated=0...
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+  checking from 0x8f23000, size=     320, allocated=1...        <--------------- p1 resized
+  checking from 0x8f23150, size=      40, allocated=0...
+  checking from 0x8f23188, size=     256, allocated=1...
+  checking from 0x8f23298, size= 1047896, allocated=0...
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
 
-myAllocatorTest1.c: a test program for my allocator 
 
-malloc.c: a replacement for malloc that uses my allocator
-test1.c: a test program that uses this replacement malloc
+---------------------------Addresses----------------------------
+p1: 8f23008 	p3: 8f23190                                        <--------------- p1 at same address and incresed size
+---------------------------Addresses----------------------------
 
-There are two different testers as some implementations of printf
-call malloc to allocate buffer space. This causes test1 to behave
-improperly as it uses myAllocator as a malloc replacement. In this
-case myAllocatorTest1 will function correctly. The only difference
-between the programs is that test1 uses myAllocator as a malloc
-replacement and myAllocatorTest1 uses myAllocator directly.
+  checking from 0x8f23000, size=     376, allocated=0...
+  checking from 0x8f23188, size=     256, allocated=1...
+  checking from 0x8f23298, size=     600, allocated=1...
+  checking from 0x8f23500, size= 1047280, allocated=0...
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
 
-Makefile: a fairly portable "makefile", targets "all" and "clean"
 
-To compile: 
- $ make 
-To clean:
- $ make clean
+---------------------------Addresses----------------------------
+p1: 8f232a0 	p3: 8f23190
+---------------------------Addresses----------------------------
 
-The cygwin runtime uses malloc() and brk() extensively.  It is
-interesting to compare the output of test1 & myAllocatorTest1.  All
-those extra allocated regions are being used by cygwin's libraries!
+  checking from 0x8f23000, size=     376, allocated=0...
+  checking from 0x8f23188, size=     256, allocated=1...
+  checking from 0x8f23298, size=     600, allocated=1...
+  checking from 0x8f23500, size= 1047280, allocated=0...
+ mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+
+
+---------------------------Addresses----------------------------
+p1: 8f232a0 	p3: 8f23190
+---------------------------Addresses----------------------------
+
+
+---------------------------BEGIN TO FREE----------------------------
+
+  checking from 0x8f23000, size=     648, allocated=0...
+  checking from 0x8f23298, size=     600, allocated=1...
+  checking from 0x8f23500, size= 1047280, allocated=0...
+ mcheck: numBlocks=3, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+  checking from 0x8f23000, size= 1048560, allocated=0...
+ mcheck: numBlocks=1, amtAllocated=0k, amtFree=0k, arenaSize=1023k
+10000 firstFitAllocRegion(4) required 0.371000 seconds
+[student@localhost os-malloc-lab-juanrazo]$ 
 
