@@ -38,7 +38,7 @@ p1: 8f23008 	p2: 8f23118 	p3: 8f23190<br />
   checking from 0x8f23298, size= 1047896, allocated=0...<br />
  mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
   checking from 0x8f23000, size=     256, allocated=1...<br />
-  checking from 0x8f23110, size=     104, allocated=0...			<--------------- p2 freed<br />
+  checking from 0x8f23110, size=     104, allocated=0...#####<--------------- p2 freed<br />
   checking from 0x8f23188, size=     256, allocated=1...<br />
   checking from 0x8f23298, size= 1047896, allocated=0...<br />
  mcheck: numBlocks=4, amtAllocated=0k, amtFree=0k, arenaSize=1023k<br />
