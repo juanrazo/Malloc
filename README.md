@@ -182,7 +182,7 @@ p1: 92cc008 	p3: 92cc190 	p4: 92cc2a0 	p5: 92cc318 	p6: 92cc118 __<-------------
 
 
 # Section 4 growArena bug
-#### This is what happens when I use growArena. Is the same test as Section 3 with the exception that p6 is now 800 and is more than what is free on the arena. I was expecting for the arena to grow but insead I get an address of 0.
+#### This is what happens when I use growArena. Is the same test as Section 3 with the exception that p6 is now 800 and is more than what is free on the arena. I was expecting for the arena to grow but insead I get a 0 for arenaSize.
 #### For the testing of next fit I used 6 pointers:
 #### p1 = 254, p2 = 100, p3 = 254, p4 = 100, p5 = 104776 and p6 = 800
 
@@ -246,7 +246,7 @@ p1: 9a81008 	p3: 9a81190 	p4: 9a812a0 	p5: 9a81318<br />
   checking from 0x9a81188, size=     256, allocated=1...<br />
   checking from 0x9a81298, size=     104, allocated=1...<br />
   checking from 0x9a81310, size= 1047776, allocated=1...<br />
- mcheck: numBlocks=5, amtAllocated=1023k, amtFree=0k, arenaSize=0k<br />
+ mcheck: numBlocks=5, amtAllocated=1023k, amtFree=0k, arenaSize=0k __<--------------- allocate p6 and arenaSize is 0k__<br />
 <br />
 <br />
 ---------------------------Addresses----------------------------<br />
